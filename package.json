@@ -10,6 +10,9 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "14.9.2"
+    "webpack-dev-server": "^4.9.2"
+  },  // ここにカンマを記述
+  "engines" : {
+    "node": "14.x.x"  // ここに先ほど確認したバージョンを記述
   }
 }
