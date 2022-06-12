@@ -16,7 +16,7 @@
 
 ### Association
 has_many :items
-has_many :favorites
+<!--has_many :favorites-->
 has_many :purchases
 
 ## items
@@ -30,7 +30,7 @@ has_many :purchases
 |delivery_charge_id |integer    |null: false                    |
 |prefecture_id      |integer    |null: false                    |
 |shipping_day_id    |integer    |null: false                    |
-|category_id        |integer     |null: false                    |
+|category_id        |integer    |null: false                    |
 |user               |references |null: false, foreign_key: true |
 <!--|category        |references |null: false, foreign_key: true |-->
 <!--|favorite        |references |null: false, foreign_key: true |-->
@@ -38,9 +38,10 @@ has_many :purchases
 
 ### Association
 belongs_to :user
-has_many :favorites
-belongs_to :category
-belongs_to :brand
+has_one :purchase
+<!--has_many :favorites-->
+<!--belongs_to :category-->
+<!--belongs_to :brand-->
 
 ## shipping addresses
 
@@ -64,7 +65,6 @@ belongs_to :purchase
 |--------------------|-----------|-------------------------------|
 |user                |references |null: false, foreign_key: true |
 |item                |references |null: false, foreign_key: true |
-|shipping_address    |references |null: false, foreign_key: true |
 
 
 ### Association
