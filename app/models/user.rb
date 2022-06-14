@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :last_name_kanji, presence: true 
   validates :last_name_kanji, format: { with: zenkaku, message: 'Input full-width characters' }, allow_blank: true
   validates :first_name_kana, presence: true 
-  validates :first_name_kana, format: { with: katakana, message: 'Input full-width  katakana characters'}, allow_blank: true
+  validates :first_name_kana, format: { with: katakana, message: 'Input full-width katakana characters'}, allow_blank: true
   validates :last_name_kana, presence: true 
   validates :last_name_kana, format: { with: katakana, message: 'Input full-width katakana characters'}, allow_blank: true
   validates :birth_day, presence: true
