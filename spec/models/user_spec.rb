@@ -24,19 +24,22 @@ RSpec.describe User, type: :model do
       end
       it 'passwordが空では登録できない' do
         @user.password = ''
+        @user.password_confirmation = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it 'passwordが数字のみでは登録できない' do
         @user.password = '123456'
+        @user.password_confirmation ="123456"
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+        expect(@user.errors.full_messages).to include('Password must be alphanumeric characters and include both letters and numbers')
       end
 
       it 'passwordが英語のみでは登録できない' do
         @user.password = 'abcdef'
+        @user.password_confirmation ="abcdef"
         @user.valid?
-        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+        expect(@user.errors.full_messages).to include('Password must be alphanumeric characters and include both letters and numbers')
       end
 
       it 'passwordが5文字以下では登録できない' do
@@ -48,8 +51,16 @@ RSpec.describe User, type: :model do
 
       it 'passwordが129文字以上では登録できない' do
         @user.password = Faker::Internet.password(min_length: 129)
+        @user.password_confirmation = @user.password
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too long (maximum is 128 characters)')
+      end
+
+      it '全角文字を含むパスワードでは登録できない' do
+        @user.password = "アイウエオ1b"
+        @user.password_confirmation = @user.password
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password must be alphanumeric characters and include both letters and numbers')
       end
 
       it 'passwordとpassword_confirmationが不一致では登録できない' do
