@@ -18,4 +18,6 @@ class User < ApplicationRecord
   validates :last_name_kana, presence: true
   validates :last_name_kana, format: { with: katakana, message: 'Input full-width katakana characters' }, allow_blank: true
   validates :birth_day, presence: true
+
+  has_many :items
 end
