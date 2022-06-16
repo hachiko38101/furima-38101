@@ -20,8 +20,8 @@ RSpec.describe "Items", type: :system do
       select @item.shipping_day.name, from: "item[shipping_day_id]"
       select @item.category.name, from: "item[category_id]"
       fill_in "item-price", with: @item.price
-      profit = @item.price * 0.9
       add_tax_price = @item.price * 0.1
+      profit = @item.price -add_tax_price
       expect(page).to have_content(profit.floor)
       expect(page).to have_content(add_tax_price.floor)
       expect{

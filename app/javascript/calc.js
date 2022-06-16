@@ -6,7 +6,7 @@ function culc (){
     const profit  = document.getElementById("profit");
 
     const addTaxPriceNum = parseInt( itemPrice * 0.1 ,10 );
-    const profitNum = parseInt( itemPrice * 0.9 , 10 );
+    const profitNum = itemPrice - addTaxPriceNum;
 
     profit.innerHTML = profitNum;
     addTaxPrice.innerHTML = addTaxPriceNum;
