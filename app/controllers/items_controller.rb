@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
     unless current_user == @item.user
       redirect_to root_path
     end 
-    @item = Item.find(params[:id])
   end
 
   def create
