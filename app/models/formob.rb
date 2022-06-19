@@ -9,6 +9,7 @@ class Formob
   validates :city, presence: true
   validates :street_address, presence: true
   validates :phone_number, presence: true
+
   validates :phone_number, format: {with: /\A0\d{9}\z|\A0\d{10}\z/, message: "is invalid. Input only number"}, allow_blank: true
   validates :user_id, presence: true
   validates :item_id, presence: true
