@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless current_user == @item.user
+    unless current_user == @item.user && @item.purchase.blank?
       redirect_to root_path
     end 
   end
