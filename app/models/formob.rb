@@ -1,7 +1,7 @@
 class Formob
   extend ActiveHash::Associations::ActiveRecordExtensions
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :city, :street_address, :building, :phone_number, :purchase, :user_id, :item_id, :token
+  attr_accessor :post_code, :prefecture_id, :city, :street_address, :building, :phone_number, :user_id, :item_id, :token
 
   validates :post_code, presence: true
   validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Enter it as follows (e.g. 123-4567)"}, allow_blank: true
@@ -10,7 +10,7 @@ class Formob
   validates :street_address, presence: true
   validates :phone_number, presence: true
 
-  validates :phone_number, format: {with: /\A0\d{9}\z|\A0\d{10}\z/, message: "is invalid. Input only number"}, allow_blank: true
+  validates :phone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/, message: "is invalid. Input only number"}, allow_blank: true
   validates :user_id, presence: true
   validates :item_id, presence: true
   validates :token, presence:true

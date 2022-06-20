@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: :index
+  before_action :item_set
   def index
-    @item = Item.find(params[:item_id])
     if @item.purchase.blank? && current_user.id != @item.user.id
       @formob = Formob.new
     else
@@ -34,5 +34,9 @@ class PurchasesController < ApplicationController
       card: formob_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def item_set
+    @item = Item.find(params[:item_id])
   end
 end
