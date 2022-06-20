@@ -10,7 +10,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    binding.pry
     @item = Item.find(params[:item_id])
     @formob = Formob.new(formob_params)
     if @formob.valid? 
